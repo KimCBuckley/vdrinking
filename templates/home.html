@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+{{warning}}
+
+
+<ul>{% for object in games %}
+<li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
+{% endfor %}</ul>
+
+{% endblock %}
