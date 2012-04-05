@@ -2,9 +2,18 @@ from django.shortcuts import render_to_response
 
 from vdrinking.bmi.models import Game
 
-def home(request):    
-    warning = "Warning, do not actually consume alcohol while playing this game online."
-    games = Game.objects.all()
+from django.contrib.auth.decorators import login_required
+
+@login_required 
+def home(request):
+    if request.user.is_authenticated():     
+        warning = "You are logged in. Yay!"
+        
+        games = vdrinking.objects.filter(user=request.user)
+    else:
+        warning = "You are not logged in. Boo!"
+        games = []
+        games = Game.objects.all()
     return render_to_response('home.html', {
     'games': games, 
     'warning': warning,
