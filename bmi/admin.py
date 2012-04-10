@@ -1,6 +1,6 @@
 from bmi.models import Game
+from bmi.models import MyGame
 from django.contrib import admin
-
 
 admin.site.register(Game)
     
