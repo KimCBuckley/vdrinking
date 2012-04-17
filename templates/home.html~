@@ -3,11 +3,10 @@
 {% block main %}
 
 {{warning}}
-{% if games %} 
-<ul>{% for object in games %}
-<li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
-{% endfor %}</ul>
+{% if games %}
+{% Games %}
 {% else %}
+<a href="/accounts/login/"> Log in </a> or 
 <a href="/accounts/create/"> Create a new account </a>
 {% endif %}
 {% endblock %}
