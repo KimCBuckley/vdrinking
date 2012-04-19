@@ -2,6 +2,24 @@
 
 {% block main %}
 
-{{ game }}
+<h1>{{ game }}</h1>
+<br>{{ game.description }}
+<br>
 
-{% endblock %}
+        <script language="javascript">
+                function addNumbers()
+                {
+                        var val1 = parseInt(document.getElementById("value1").value);
+                        var val2 = parseInt(document.getElementById("value2").value);
+                        var ansD = document.getElementById("answer");
+                        ansD.value = (val2 * .8) * (5.15/val1) * .67;
+                }
+        </script>
+
+        Weight = <input type="text" id="value1" name="value1" value="1"/>
+        Shots = <input type="text" id="value2" name="value2" value="2"/>
+        <input type="button" name="Sumbit" value="Do a shot!" onclick="javascript:addNumbers()"/>
+<br>
+        BAC = <input type="text" id="answer" name="answer" value=""/>
+
+{% endblock main %}
