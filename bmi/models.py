@@ -14,3 +14,4 @@ class MyGame(models.Model):
     user = models.ForeignKey(User)
     body_weight = models.IntegerField()    
 
+
