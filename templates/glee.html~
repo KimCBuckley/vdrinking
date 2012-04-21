@@ -5,6 +5,7 @@
 <h1>{{ game }}</h1>
 <br>{{ game.description }}
 <br>
+<br>
 
         <script language="javascript">
                 function addNumbers()

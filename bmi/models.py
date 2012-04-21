@@ -1,5 +1,6 @@
 from django.db import models 
 from django.contrib.auth.models import User
+from django.forms import ModelForm
 
 class Game(models.Model):
     name = models.CharField(max_length=255)
@@ -12,6 +13,10 @@ class Game(models.Model):
 class MyGame(models.Model):
     game = models.ForeignKey(Game)
     user = models.ForeignKey(User)
-    body_weight = models.IntegerField()    
+    final_bac = models.FloatField()
+    def __unicode__(self):
+        return self.game.name
 
-
+class MyGameForm(ModelForm):
+    class Meta:
+        model = MyGame  
