@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/login/$', 'django.contrib.auth.views.login'), 
     url(r'^accounts/create/$', 'vdrinking.bmi.views.create'),
-    # url(r'^accounts/profile/$', 'vdrinking.bmi.views.profile'), 
+    # url(r'^accounts/profile/(?user-id)/$', 'vdrinking.bmi.views.profile'), 
 )
 
 urlpatterns += staticfiles_urlpatterns()

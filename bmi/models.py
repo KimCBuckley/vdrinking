@@ -19,4 +19,10 @@ class MyGame(models.Model):
 
 class MyGameForm(ModelForm):
     class Meta:
-        model = MyGame  
+        model = MyGame
+
+class User(models.Model): 
+    user = User
+    games = MyGame.objects.filter(user=User)
+    def __unicode__(self):
+        return self.name

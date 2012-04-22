@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-
+from vdrinking.bmi.models import User
 
 def home(request):
     if request.user.is_authenticated():     
@@ -24,6 +24,7 @@ def home(request):
     })
 
 @csrf_protect
+
 def detail(request, game_id): 
     if request.method == 'POST': # If the form has been submitted...
         form = MyGameForm(request.POST) # A form bound to the POST data
@@ -54,4 +55,13 @@ def create(request):
         'form': form,
     }, context_instance=RequestContext(request))
 
+@login_required
+def user(request):
+    user = User
+    games = MyGame.objects.filter(user=User)
+    return HttpResponseRedirect('/accounts/profile/(?user-id)/')
+    'games': games, 
+    'warning': warning,
+    'auth': auth,
+    })
 

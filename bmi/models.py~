@@ -13,8 +13,14 @@ class Game(models.Model):
 class MyGame(models.Model):
     game = models.ForeignKey(Game)
     user = models.ForeignKey(User)
-    final_bac = 
+    final_bac = models.FloatField()
+    def __unicode__(self):
+        return self.game.name
 
 class MyGameForm(ModelForm):
     class Meta:
-        model = MyGame  
+        model = MyGame
+
+class User(models.Model): 
+    user = User
+    games = MyGame.objects.filter(user=User)
