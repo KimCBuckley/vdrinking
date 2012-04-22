@@ -5,6 +5,7 @@
 <h1>{{ user }}</h1>
 {% for object in games %}
 {{ object.game.name }}: {{ object.final_bac }}
-
+{% endfor %}
+<a href="/">Go back to the home page.</a>
 
 {% endblock main %}

@@ -23,4 +23,11 @@
 <br>
         BAC = <input type="text" id="answer" name="answer" value=""/>
 
+<h3>Save my score!"</h3>
+<form action="" method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>
+<a href="">Go back to the home page.</a>
+
 {% endblock main %}
