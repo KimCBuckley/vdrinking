@@ -2,9 +2,9 @@
 
 {% block main %}
 
-{{warning}}
+<h2>{{warning}}</h2>
 {% if games %}<br><br>
-<a href="">See your profile.</a>
+<a href="/accounts/profile/{{ user.id }}">See your profile.</a>
 <br><br><ul>{% for object in games %}
 <li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
 {% endfor %}</ul>
@@ -13,3 +13,11 @@
 <a href="/accounts/create/"> Create a new account</a>.
 {% endif %}
 {% endblock %}
+
+{% block latest %}
+<h2>latest games</h2>
+<ul>{% for object in latestgames %}
+<li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
+{% endfor %}</ul>
+{% endblock %}
+

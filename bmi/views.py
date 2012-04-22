@@ -6,22 +6,25 @@ from django.views.decorators.csrf import csrf_protect
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from vdrinking.bmi.models import User
+from django.contrib.auth.models import User
 
 def home(request):
     if request.user.is_authenticated():     
         warning = "You are logged in. Yay!"
         games = Game.objects.all()
         auth = True        
+        latestgames = Game.objects.order_by('name')[:5]
     else:
         warning = "You are not logged in. Boo!"
         games = []
         auth = False
+        latestgames = Game.objects.order_by('name')[:5]
     return render_to_response('home.html', {
     'games': games, 
     'warning': warning,
     'auth': auth,
-    })
+    'latestgames': latestgames, 
+     }, context_instance=RequestContext(request))
 
 @csrf_protect
 
@@ -56,12 +59,11 @@ def create(request):
     }, context_instance=RequestContext(request))
 
 @login_required
-def user(request):
-    user = User
-    games = MyGame.objects.filter(user=User)
-    return HttpResponseRedirect('/accounts/profile/(?user-id)/')
+def profile(request, user_id):
+    user = User.objects.get(id=user_id)
+    games = MyGame.objects.filter(user=user)
+    return render_to_response('profile.html', {
     'games': games, 
-    'warning': warning,
-    'auth': auth,
+    'user': user, 
     })
 

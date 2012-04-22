@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<h1>{{ user }}</h1>
+{% for object in games %}
+{{ object.game.name }}: {{ object.final_bac }}
+
+
+{% endblock main %}
