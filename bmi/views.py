@@ -7,6 +7,7 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from vdrinking.bmi.models import ContactForm
 
 def home(request):
     if request.user.is_authenticated():     
@@ -65,5 +66,19 @@ def profile(request, user_id):
     return render_to_response('profile.html', {
     'games': games, 
     'user': user, 
+    })
+
+def contact(request):
+    if request.method == 'POST': # If the form has been submitted...
+        form = ContactForm(request.POST) # A form bound to the POST data
+        if form.is_valid(): # All validation rules pass
+            # Process the data in form.cleaned_data
+            # ...
+            return HttpResponseRedirect('/thanks/') # Redirect after POST
+    else:
+        form = ContactForm() # An unbound form
+
+    return render_to_response('contact.html', {
+        'form': form,
     })
 
