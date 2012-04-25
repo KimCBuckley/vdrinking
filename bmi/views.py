@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from vdrinking.bmi.models import ContactForm
+from django.contrib.auth import logout
 
 def home(request):
     if request.user.is_authenticated():     
@@ -82,3 +83,8 @@ def contact(request):
         'form': form,
     })
 
+def logout(request):
+    bye = "You are now logged out!"
+    return render_to_response('logout.html', {
+        'bye': bye,
+    })

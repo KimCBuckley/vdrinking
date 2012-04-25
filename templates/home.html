@@ -5,6 +5,8 @@
 <h2>{{warning}}</h2>
 {% if games %}<br><br>
 <a href="/accounts/profile/{{ user.id }}">See your profile.</a>
+<br><br>
+<a href="/logout/">Log out.</a>
 <br><br><ul>{% for object in games %}
 <li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
 {% endfor %}</ul>
@@ -16,33 +18,15 @@
 <br>
 Contact me: 
 <br>
-<br>
 <form action="/contact/" method="post">
-    {{ form.non_field_errors }}
-    <div class="fieldWrapper">
-        {{ form.subject.errors }}
-        <label for="id_subject">Email subject:</label>
-        {{ form.subject }}
-    </div>
-    <div class="fieldWrapper">
-        {{ form.message.errors }}
-        <label for="id_message">Your message:</label>
-        {{ form.message }}
-    </div>
-    <div class="fieldWrapper">
-        {{ form.sender.errors }}
-        <label for="id_sender">Your email address:</label>
-        {{ form.sender }}
-    </div>
-    <div class="fieldWrapper">
-        {{ form.cc_myself.errors }}
-        <label for="id_cc_myself">CC yourself?</label>
-        {{ form.cc_myself }}
-    </div>
+    {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            {{ field.label_tag }}: {{ field }}
+        </div>
+    {% endfor %}
     <p><input type="submit" value="Send message" /></p>
 </form>
-
-
 {% endblock %}
 
 {% block latest %}
