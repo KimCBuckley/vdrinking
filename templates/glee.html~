@@ -28,6 +28,6 @@
 {{ form.as_p }}
 <input type="submit" value="Submit" />
 </form>
-<a href="">Go back to the home page.</a>
+<a href="/">Go back to the home page.</a>
 
 {% endblock main %}

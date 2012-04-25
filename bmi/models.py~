@@ -33,3 +33,6 @@ class ContactForm(forms.Form):
     message = forms.CharField()
     sender = forms.EmailField()
     cc_myself = forms.BooleanField(required=False)
+    def __unicode__(self):
+        return self.name
+

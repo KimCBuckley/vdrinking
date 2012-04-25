@@ -3,6 +3,7 @@
 
 {% block main %}
 
+{% csrf_token %}
 <form action="/contact/" method="post">
 <p><label for="id_subject">Subject:</label>
     <input id="id_subject" type="text" name="subject" maxlength="100" /></p>
@@ -13,6 +14,7 @@
 <p><label for="id_cc_myself">Cc myself:</label>
     <input type="checkbox" name="cc_myself" id="id_cc_myself" /></p>
 <input type="submit" value="Submit" />
+{% csrf_token %}
 </form>
 
 {% endblock %}

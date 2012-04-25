@@ -7,11 +7,13 @@
 {{ object.game.name }}: {{ object.final_bac }}
 {% endfor %}
 <br><br><a href="/">Go back to the home page.</a>
+{% endblock %}
 
 {% block latest %}
-<h2>latest games</h2>
+<h2>Latest Games</h2>
 <ul>{% for object in latestgames %}
 <li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
 {% endfor %}</ul>
+{% endblock latest %}
 
-{% endblock main %}
+
