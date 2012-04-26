@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 
 {% block main %}
+<br>{% if object = Glee %}
+{% load static %}
+<img src="{% get_static_prefix %}images/glee.jpg" />
+<br><br>
+{% endif %}
 
 <h1>{{ game }}</h1>
-<br>{{ game.description }}
+<br>{{ game.description }}<br>
+
 <br>
 <br>
 
@@ -28,6 +34,23 @@
 {{ form.as_p }}
 <input type="submit" value="Submit" />
 </form>
+<b>Effects of alcohol:</b>
+<br>BAC = 0 - 0.05: You're still sober
+<br>BAC = 0.05: You're talkative and mroe confident. 
+<br>BAC = 0.08: You're legally drunk. 
+<br>BAC = 0.13: You're stumbling when you walk and you're senses are less sharp. 
+<br>BAC = 0.24: You're vomiting. 
+<br>BAC = 0.30: You're getting close to liver failure. 
+<br>BAC = 0.40: Dude, you drunk yourself into a coma. 
+<br>BAC = 0.45: What are you doing still drinking? You're dead. 
+
 <a href="/">Go back to the home page.</a>
 
 {% endblock main %}
+
+{% block latest %}
+<h2>Latest Games</h2>
+<ul>{% for object in latestgames %}
+<li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
+{% endfor %}</ul>
+{% endblock latest %}

@@ -5,8 +5,7 @@
 <h2>{{warning}}</h2>
 {% if games %}
 {% load static %}
-<img src="{% get_static_prefix %}images/shotglass.jpg" />
-
+<img src="{% get_static_prefix %}images/glee.jpg" />
 <br><br>
 <a href="/accounts/profile/{{ user.id }}">See your profile.</a>
 <br><br>
